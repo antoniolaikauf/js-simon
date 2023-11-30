@@ -47,7 +47,7 @@ button.addEventListener("click",function(){
          wrong++
         // console.log(arrayNumSbagliati);
     }
-
+    // output finale 
     if (arrayNumGiusti.length + arrayNumSbagliati.length === arrayNumRandom.length) {
         outputUtente.innerHTML = " sbagliate " + wrong+ " hai sbagliato questi numeri " + arrayNumSbagliati +   " giuste " + right +  " hai fatto giusto questi numeri " + arrayNumGiusti
     }
