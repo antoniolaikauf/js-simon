@@ -16,7 +16,7 @@ displayRisposta.style.display="none"
 setTimeout(() => {
     display.style.display="none"
     displayRisposta.style.display="block"
-}, 300);
+}, 3000);
 
 // variabile dove vengono inseriti i numeri da parte dell'utente
 const numeriInseriti= document.getElementById("inserimento-numeri");
@@ -51,7 +51,7 @@ button.addEventListener("click",function(){
     if (arrayNumGiusti.length + arrayNumSbagliati.length === arrayNumRandom.length) {
         outputUtente.innerHTML = " sbagliate " + wrong+ " hai sbagliato questi numeri " + arrayNumSbagliati +   " giuste " + right +  " hai fatto giusto questi numeri " + arrayNumGiusti
     }
-    
+    numeriInseriti.value="";
 });
 
 
