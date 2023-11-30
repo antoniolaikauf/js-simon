@@ -1,14 +1,21 @@
-// creazione dell avariabile dove si vedran gli elementi
-let arrayNumRandom= numerGenerated(1,100,5);
+// creazione della variabile dove si vedranno gli elementi
+const arrayNumRandom= numerGenerated(1,100,5);
 console.log(arrayNumRandom);
 
+
 // inserimeto numeri dentro html cosi utene può vedere
-let display= document.getElementById("js-numeri");
+const display= document.getElementById("js-numeri");
 display.innerHTML=arrayNumRandom;
-// scomparsa numeri 
+
+// variabile dove c'è il display della rispasta
+const displayRisposta= document.getElementById("display");
+displayRisposta.style.display="none"
+
+// scomparsa numeri e comparsa da partedel display della risposta
 setTimeout(() => {
     display.innerHTML="";
-}, 3000);
+    displayRisposta.style.display="block"
+}, 30000);
 
 // variabile dove vengono inseriti i numeri da parte dell'utente
 const numeriInseriti= document.getElementById("inserimento-numeri");
@@ -17,18 +24,18 @@ const numeriInseriti= document.getElementById("inserimento-numeri");
 const outputUtente=document.getElementById("output") ;
 
 // variabile con bottone per evento
-let button=document.getElementById("js-controllo");
 
+let button=document.getElementById("js-controllo");
 button.addEventListener("click",function(){
-    let valore = parseInt(numeriInseriti.value) 
-    console.log(valore);
+    let valore=parseInt(numeriInseriti.value) 
+
+    // controllo se ha fatto giusto o no
     if (arrayNumRandom.includes(valore)) {
-       outputUtente.innerHTML="corretto"
+    outputUtente.innerHTML="corretto"
     }else{
-       outputUtente.innerHTML="sbagliato"
+    outputUtente.innerHTML="sbagliato"
     }
 })
-
 
 
 
