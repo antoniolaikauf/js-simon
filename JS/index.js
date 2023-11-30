@@ -13,9 +13,9 @@ displayRisposta.style.display="none"
 
 // scomparsa numeri e comparsa da partedel display della risposta
 setTimeout(() => {
-    display.innerHTML="";
+    display.style.display="none"
     displayRisposta.style.display="block"
-}, 30000);
+}, 3000);
 
 // variabile dove vengono inseriti i numeri da parte dell'utente
 const numeriInseriti= document.getElementById("inserimento-numeri");
@@ -32,35 +32,27 @@ const arrayNumGiusti= [];
     
 let button=document.getElementById("js-controllo");
 button.addEventListener("click",function(){
-    let valore=parseInt(numeriInseriti.value) 
+    let valore=parseInt(numeriInseriti.value); 
 
-    // controllo se ha fatto giusto o no
-    if (arrayNumRandom.includes(valore)) {
-        outputUtente.innerHTML = valore + "è corretto"
-        arrayNumGiusti.push(valore)
-        // console.log(arrayNumGiusti);
-    }else{
-        outputUtente.innerHTML = valore + " è sbagliato"
-        arrayNumSbagliati.push(valore)
-        // console.log(arrayNumSbagliati);
-    }
-    // quando tentativi finiti mettere i risultati dentro html
-    if (arrayNumGiusti.length + arrayNumSbagliati.length === 5) {
+    smistamentoValori(valore);
+
+    // quando tentativi finiti mettere i risultati dentro html ( messo arrayrandom.length cosi che se cambia la quantità dei numeri random si avra i stessi tentativi quanti sono i numeri random)
+    if (arrayNumGiusti.length + arrayNumSbagliati.length === arrayNumRandom.length) {
 
         outputUtente.innerHTML = "hai sbagliato questi numeri " + arrayNumSbagliati + "   hai fatto giusto questi numeri " + arrayNumGiusti
     }
-})
+});
 
 
 
 
 
 // funzione per creare l'array con i numeri 
-function numerGenerated (minNub,maxNub,maxBomb) {
+function numerGenerated (minNub,maxNub,maxrRandom) {
     // creazione dell'arry
     let arraynum= [];
     // ciclo per controllare se array mette numeri doppi
-    while (arraynum.length < maxBomb) {
+    while (arraynum.length < maxrRandom) {
         let numeri= randomNumber( maxNub, minNub)
         if (!arraynum.includes(numeri)) {
             arraynum.push(numeri)
@@ -73,3 +65,18 @@ function numerGenerated (minNub,maxNub,maxBomb) {
 function randomNumber(max, min) {
     return Math.floor(Math.random() * max + min)
 };
+
+
+// funzione per controllare valori
+function smistamentoValori(numScelto) {
+        // controllo se ha fatto giusto o no
+        if (arrayNumRandom.includes(numScelto)) {
+            outputUtente.innerHTML = numScelto + "è corretto"
+             return arrayNumGiusti.push(numScelto)
+            // console.log(arrayNumGiusti);
+        }else{
+            outputUtente.innerHTML = numScelto + " è sbagliato"
+           return  arrayNumSbagliati.push(numScelto)
+            // console.log(arrayNumSbagliati);
+        }
+}
