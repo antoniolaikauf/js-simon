@@ -10,7 +10,24 @@ setTimeout(() => {
     display.innerHTML="";
 }, 3000);
 
+// variabile dove vengono inseriti i numeri da parte dell'utente
+const numeriInseriti= document.getElementById("inserimento-numeri");
 
+// variabile dove ci sarà l'output per l'utente
+const outputUtente=document.getElementById("output") ;
+
+// variabile con bottone per evento
+let button=document.getElementById("js-controllo");
+
+button.addEventListener("click",function(){
+    let valore = parseInt(numeriInseriti.value) 
+    console.log(valore);
+    if (arrayNumRandom.includes(valore)) {
+       outputUtente.innerHTML="corretto"
+    }else{
+       outputUtente.innerHTML="sbagliato"
+    }
+})
 
 
 
