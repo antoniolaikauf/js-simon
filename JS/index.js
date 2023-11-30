@@ -23,20 +23,33 @@ const numeriInseriti= document.getElementById("inserimento-numeri");
 // variabile dove ci sarà l'output per l'utente
 const outputUtente=document.getElementById("output") ;
 
-// variabile con bottone per evento
+// array con dentro i numeri giusti o sbagliati
+const arrayNumSbagliati= [];
 
+const arrayNumGiusti= [];
+
+// variabile con bottone per evento
+    
 let button=document.getElementById("js-controllo");
 button.addEventListener("click",function(){
     let valore=parseInt(numeriInseriti.value) 
 
     // controllo se ha fatto giusto o no
     if (arrayNumRandom.includes(valore)) {
-    outputUtente.innerHTML="corretto"
+        outputUtente.innerHTML = valore + "è corretto"
+        arrayNumGiusti.push(valore)
+        // console.log(arrayNumGiusti);
     }else{
-    outputUtente.innerHTML="sbagliato"
+        outputUtente.innerHTML = valore + " è sbagliato"
+        arrayNumSbagliati.push(valore)
+        // console.log(arrayNumSbagliati);
+    }
+    // quando tentativi finiti mettere i risultati dentro html
+    if (arrayNumGiusti.length + arrayNumSbagliati.length === 5) {
+
+        outputUtente.innerHTML = "hai sbagliato questi numeri " + arrayNumSbagliati + "   hai fatto giusto questi numeri " + arrayNumGiusti
     }
 })
-
 
 
 
@@ -54,9 +67,9 @@ function numerGenerated (minNub,maxNub,maxBomb) {
         }
     }
     return arraynum
-}
+};
 
 // funzione per creare un numero random
 function randomNumber(max, min) {
     return Math.floor(Math.random() * max + min)
-}
+};
