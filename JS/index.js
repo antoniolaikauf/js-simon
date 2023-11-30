@@ -16,7 +16,7 @@ displayRisposta.style.display="none"
 setTimeout(() => {
     display.style.display="none"
     displayRisposta.style.display="block"
-}, 3000);
+}, 30000);
 
 // variabile dove vengono inseriti i numeri da parte dell'utente
 const numeriInseriti= document.getElementById("inserimento-numeri");
