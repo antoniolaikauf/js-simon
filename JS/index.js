@@ -9,7 +9,7 @@ const display= document.getElementById("display-numeri");
 display.innerHTML=arrayNumRandom;
 
 // variabile dove c'è il display della rispasta
-const displayRisposta= document.getElementById("display");
+const displayRisposta= document.getElementById("risposta-utente");
 displayRisposta.style.display="none"
 
 // scomparsa numeri e comparsa da partedel display della risposta
@@ -21,23 +21,26 @@ setTimeout(() => {
 // variabile dove vengono inseriti i numeri da parte dell'utente
 const numeriInseriti= document.getElementById("inserimento-numeri");
 
-// variabile dove ci sarà l'output per l'utente
-const outputUtente=document.getElementById("output") ;
-
 // array con dentro i numeri giusti o sbagliati
 const arrayNumSbagliati= [];
 
 const arrayNumGiusti= [];
 
+// variabili con conteggio giuste e sbagliati
 let wrong=0;
 let right=0;
 
+// variabile tentativi
+
+let tentativi= arrayNumRandom.length;
+
 // variabile con bottone per evento
     
-let button=document.getElementById("js-controllo");
+let button=document.getElementById("tentativi");
 button.addEventListener("click",function(){
-    let valore=parseInt(numeriInseriti.value); 
-
+    let valore=parseInt(numeriInseriti.value);
+    tentativi-- 
+    button.innerHTML="tentativi" + tentativi
     if (arrayNumRandom.includes(valore)) {
           arrayNumGiusti.push(valore)
           right++
@@ -48,8 +51,9 @@ button.addEventListener("click",function(){
         // console.log(arrayNumSbagliati);
     }
     // output finale 
-    if (arrayNumGiusti.length + arrayNumSbagliati.length === arrayNumRandom.length) {
-        outputUtente.innerHTML = " sbagliate " + wrong+ " hai sbagliato questi numeri " + arrayNumSbagliati +   " giuste " + right +  " hai fatto giusto questi numeri " + arrayNumGiusti
+    if (tentativi === 0) {
+        document.getElementById("sbagliate").innerHTML = " sbagliate " + wrong+ " ,hai sbagliato questi numeri " + arrayNumSbagliati
+        document.getElementById("giuste").innerHTML=" giuste " + right +  ", hai fatto giusto questi numeri " + arrayNumGiusti
     }
     numeriInseriti.value="";
 });
@@ -59,11 +63,11 @@ button.addEventListener("click",function(){
 
 
 // funzione per creare l'array con i numeri 
-function numerGenerated (minNub,maxNub,maxrRandom) {
+function numerGenerated (minNub,maxNub,maxRandom) {
     // creazione dell'arry
     let arraynum= [];
     // ciclo per controllare se array mette numeri doppi
-    while (arraynum.length < maxrRandom) {
+    while (arraynum.length < maxRandom) {
         let numeri= randomNumber( maxNub, minNub)
         if (!arraynum.includes(numeri)) {
             arraynum.push(numeri)
@@ -76,4 +80,3 @@ function numerGenerated (minNub,maxNub,maxrRandom) {
 function randomNumber(max, min) {
     return Math.floor(Math.random() * max + min)
 };
-
