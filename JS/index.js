@@ -1,10 +1,14 @@
 // creazione dell avariabile dove si vedran gli elementi
 let arrayNumRandom= numerGenerated(1,100,5);
-
+console.log(arrayNumRandom);
 
 // inserimeto numeri dentro html cosi utene può vedere
 let display= document.getElementById("js-numeri");
-display.innerHTML=arrayNumRandom
+display.innerHTML=arrayNumRandom;
+// scomparsa numeri 
+setTimeout(() => {
+    display.innerHTML="";
+}, 3000);
 
 
 
