@@ -12,14 +12,19 @@ display.innerHTML=arrayNumRandom;
 const displayRisposta= document.getElementById("risposta-utente");
 displayRisposta.style.display="none"
 
+// variabile con bottone per evento
+
+let button=document.getElementById("tentativi");
+
+// variabile dove vengono inseriti i numeri da parte dell'utente
+const numeriInseriti= document.getElementById("inserimento-numeri");
+
 // scomparsa numeri e comparsa da partedel display della risposta
 setTimeout(() => {
     display.style.display="none"
     displayRisposta.style.display="block"
 }, 30000);
 
-// variabile dove vengono inseriti i numeri da parte dell'utente
-const numeriInseriti= document.getElementById("inserimento-numeri");
 
 // array con dentro i numeri giusti o sbagliati
 const arrayNumSbagliati= [];
@@ -34,9 +39,9 @@ let right=0;
 
 let tentativi= arrayNumRandom.length;
 
-// variabile con bottone per evento
-    
-let button=document.getElementById("tentativi");
+button.innerHTML="tentativi" + tentativi
+
+// evento bottone
 button.addEventListener("click",function(){
     let valore=parseInt(numeriInseriti.value);
     tentativi-- 
